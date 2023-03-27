@@ -29,6 +29,16 @@ a {
   padding: 10px;
 }
 
+.all-products-selection{
+  display: flex;
+  margin: auto;
+}
+.all-products-selection *{
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar-container {
   display: flex;
   justify-content: space-between;
