@@ -2,7 +2,7 @@ import React from 'react';
 import { client } from '../lib/client';
 import { Product } from '../components';
 
-const Home = ({ products}) => {
+const allProducts = ({ products}) => {
   return (
     <>
       <div className="products-heading">
@@ -24,4 +24,4 @@ export const getServerSideProps = async () => {
     props: { products }
   }
 }
-export default Home
+export default allProducts
