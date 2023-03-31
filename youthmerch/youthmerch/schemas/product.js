@@ -7,7 +7,13 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'array',
-      of: [{ type:'image' }],
+      of: [{ type:'image',
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Caption'
+        }] }],
       options: {
         hotspot: true,
       }
