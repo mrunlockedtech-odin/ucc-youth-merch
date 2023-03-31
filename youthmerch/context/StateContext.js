@@ -12,27 +12,34 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1);
+  const [size, setSize] = useState('S');
+  const [color, setColor] = useState('');
 
   let foundProduct;
   let index;
 
-  const onAdd = (product, quantity) => {
-    const checkProductInCart = cartItems.find((item) => item._id === product._id);
-
+  const onAdd = (product, quantity, size, color) => {
+    product.description = size + " " + color
+    const checkProductInCart = cartItems.find((item) => item.description === product.description);
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
     if (checkProductInCart) {
 
       const updatedCartItems = cartItems.map((cartProduct) => {
-        if (cartProduct._id === product._id) return {
+
+        if (cartProduct.description === product.description){ return {
           ...cartProduct,
-          quantity: cartProduct.quantity + quantity
+          quantity: cartProduct.quantity + quantity,
+        }} else {
+          return {...cartProduct}
         }
+
       })
 
       setCartItems(updatedCartItems)
     } else {
       product.quantity = quantity;
+
       setCartItems([...cartItems, { ...product }])
     }
     toast.success(`${qty} ${product.name} added to the cart.`);
@@ -65,6 +72,15 @@ export const StateContext = ({ children }) => {
     }
   }
 
+  const changeColor = (sentColor) => {
+    setColor(sentColor)
+    console.log(sentColor)
+  }
+  const changeSize = (sentSize) => {
+    setSize(sentSize)
+    console.log(sentSize)
+  }
+
   const incQty = () => {
     setQty((prevQty) => prevQty + 1)
   }
@@ -91,7 +107,11 @@ export const StateContext = ({ children }) => {
         onRemove,
         setCartItems,
         setTotalPrice,
-        setTotalQuantities
+        setTotalQuantities,
+        changeColor,
+        changeSize,
+        size,
+        color
       }}>
       {children}
     </Context.Provider>

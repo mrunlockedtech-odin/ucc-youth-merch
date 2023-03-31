@@ -37,6 +37,12 @@ export default {
       type: 'number',
     },
     {
+      name: 'Colors',
+      title: 'Colors',
+      type: 'array',
+      of: [{type:'string'}]
+    },
+    {
       name: 'details',
       title: 'Details',
       type: 'string',
