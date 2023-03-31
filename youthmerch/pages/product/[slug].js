@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
@@ -8,17 +8,16 @@ import { useStateContext } from '../../context/StateContext';
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0)
-  const { decQty, incQty, qty, onAdd, setShowCart, changeColor, changeSize, size, color } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart, changeColor, changeSize, size, color, changeFrontLogo, frontLogo } = useStateContext();
 
   const handleBuyNow = () => {
-    onAdd(product, qty, size, color);
+    onAdd(product, qty, size, color, frontLogo);
 
     setShowCart(true);
   }
   useEffect(() => {
     changeColor(product.Colors[0])
-  },[])
-
+  }, [])
   return (
     <div>
       <div className="product-detail-container">
@@ -54,12 +53,23 @@ const ProductDetails = ({ product, products }) => {
             </div>
             <div className="color-container">
               <label for="color">Color: </label>
-              <select id="color" name="color" onChange={(e) =>changeColor(e.target.value)}>
+              <select id="color" name="color" onChange={(e) => changeColor(e.target.value)}>
                 {product.Colors.map((color) => {
-                 return <option>{color}</option>
+                  return <option>{color}</option>
                 })}
               </select>
             </div>
+            {product.frontLogo ?
+              <div className="front-logo-container">
+                <label for="frLogo">Front Logo: </label>
+                <select id="frLogo" name="frLogo" onChange={(e) => changeFrontLogo(e.target.value)}>
+                  <option value="Square Logo">Square Logo</option>
+                  <option value="Circular Logo">Circular Logo</option>
+                </select>
+              </div>
+              :
+              <></>
+            }
           </div>
           <p className="price">${price}</p>
           <div className="quantity">
@@ -71,7 +81,7 @@ const ProductDetails = ({ product, products }) => {
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty, size, color)}>Add to Cart</button>
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty, size, color, frontLogo)}>Add to Cart</button>
             <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>

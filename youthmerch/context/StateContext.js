@@ -14,12 +14,13 @@ export const StateContext = ({ children }) => {
   const [qty, setQty] = useState(1);
   const [size, setSize] = useState('S');
   const [color, setColor] = useState('');
+  const [frontLogo, setFrontLogo] = useState("Square Logo");
 
   let foundProduct;
   let index;
 
-  const onAdd = (product, quantity, size, color) => {
-    product.description = size + " " + color
+  const onAdd = (product, quantity, size, color, frontLogo) => {
+    product.description = size + " " + color + ", " + frontLogo
     const checkProductInCart = cartItems.find((item) => item.description === product.description);
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
@@ -80,6 +81,10 @@ export const StateContext = ({ children }) => {
     setSize(sentSize)
     console.log(sentSize)
   }
+  const changeFrontLogo = (frLogo) =>{
+    setFrontLogo(frLogo)
+    console.log(frLogo)
+  }
 
   const incQty = () => {
     setQty((prevQty) => prevQty + 1)
@@ -111,7 +116,9 @@ export const StateContext = ({ children }) => {
         changeColor,
         changeSize,
         size,
-        color
+        color,
+        frontLogo,
+        changeFrontLogo
       }}>
       {children}
     </Context.Provider>

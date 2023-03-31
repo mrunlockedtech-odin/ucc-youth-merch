@@ -23,6 +23,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'frontLogo',
+      title: 'FrontLogoAvail',
+      type: 'boolean',
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
