@@ -20,7 +20,6 @@ const allProducts = ({ products}) => {
         <select name="product-type" id="product-type" className="product-selection" onChange={handleTypeSelection}>
           <option value="All Items">All Items</option>
           {productTypes?.map((productType) => <option value={productType}>{productType}</option>)}
-          {console.log("ProductTypes", productTypes)}
         </select>
       </div>
 
