@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { client } from '../lib/client';
-import { Product } from '../components';
+import { Product, ProductBanner } from '../components';
 
 const allProducts = ({ products}) => {
   const[selectedProducts,setSelectedProducts] = useState(products)
@@ -12,7 +12,7 @@ const allProducts = ({ products}) => {
   return (
     <>
       <div className="products-heading">
-        <h2>All Products</h2>
+        <ProductBanner />
       </div>
 
       <div className="all-products-selection">

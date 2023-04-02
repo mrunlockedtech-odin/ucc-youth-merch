@@ -178,9 +178,15 @@ span.text-red {
   width: 100%;
 
 }
+.product-banner-container {
+  padding: 35px 40px;
+  background-color: #d5d4d4;
+  border-radius: 15px;
+  position: relative;
+  height: 200px;
+  line-height: 0.9;
+  width: 100%;
 
-.hero-banner-container .beats-solo {
-  font-size: 20px;
 }
 
 .hero-banner-container button {
@@ -204,6 +210,12 @@ span.text-red {
 .hero-banner-container h1 {
   color: white;
   font-size: 10em;
+  margin-left: -20px;
+  text-transform: uppercase;
+}
+.product-banner-container h1 {
+  color: white;
+  font-size: 9em;
   margin-left: -20px;
   text-transform: uppercase;
 }
