@@ -11,10 +11,7 @@ const Home = ({ products, bannerData }) => {
       </div>
       <div className="products-container">
         {products?.map((product,idx) =>(idx < 4 ? <Product key={product._id} product={product}/> : <></>))}
-
       </div>
-
-      <FooterBanner footerBanner={bannerData && bannerData[0]}/>
     </>
   )
 }
