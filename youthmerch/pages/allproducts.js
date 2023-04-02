@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { client } from '../lib/client';
-import { Product, ProductBanner } from '../components';
+import { Product} from '../components';
 
-const allProducts = ({ products}) => {
-  const[selectedProducts,setSelectedProducts] = useState(products)
-  const productTypes = Array.from (new Set(products.map((product) => product.type)))
+const allProducts = ({ products }) => {
+  const [selectedProducts, setSelectedProducts] = useState(products)
+  const productTypes = Array.from(new Set(products.map((product) => product.type)))
 
   const handleTypeSelection = (e) => {
     setSelectedProducts(products.filter(product => product.type === e.target.value || e.target.value === 'All Items'))
@@ -12,7 +12,11 @@ const allProducts = ({ products}) => {
   return (
     <>
       <div className="products-heading">
-        <ProductBanner />
+        <div className="product-banner-container">
+          <div>
+            <h1>All Products</h1>
+          </div>
+        </div>
       </div>
 
       <div className="all-products-selection">
@@ -24,7 +28,7 @@ const allProducts = ({ products}) => {
       </div>
 
       <div className="products-container gridProducts">
-        {selectedProducts?.map((product) => <Product key={product._id} product={product}/>)}
+        {selectedProducts?.map((product) => <Product key={product._id} product={product} />)}
       </div>
     </>
   )
