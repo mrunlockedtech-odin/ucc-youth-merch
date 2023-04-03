@@ -13,9 +13,7 @@ const allProducts = ({ products }) => {
     <>
       <div className="products-heading">
         <div className="product-banner-container">
-          <div>
             <h1>All Products</h1>
-          </div>
         </div>
       </div>
 

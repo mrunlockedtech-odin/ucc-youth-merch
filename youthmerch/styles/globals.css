@@ -179,6 +179,7 @@ span.text-red {
 
 }
 .product-banner-container {
+  display: flex;
   padding: 35px 40px;
   background-color: #d5d4d4;
   border-radius: 15px;
@@ -186,7 +187,9 @@ span.text-red {
   height: 200px;
   line-height: 0.9;
   width: 100%;
-
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-banner-container button {
@@ -215,9 +218,11 @@ span.text-red {
 }
 .product-banner-container h1 {
   color: white;
-  font-size: 9em;
-  margin-left: -20px;
+  font-size: 70px;
   text-transform: uppercase;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-banner-image {
